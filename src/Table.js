@@ -1,8 +1,8 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Sparklines, SparklinesLine} from 'react-sparklines';
+import React from "react";
+import { connect } from "react-redux";
+import { Sparklines, SparklinesLine } from "react-sparklines";
 
-function Table({weather}) {
+function Table({ weather }) {
   return (
     <div>
       <div className="row text-center my-3">
@@ -19,7 +19,7 @@ function Table({weather}) {
             <div className="row text-center my-4" key={item.city.name}>
               <div className="col-3">
                 <img
-                  src={`https://maps.locationiq.com/v2/staticmap?key=fe0978f0c9630c&center=${item.city.coord.lat},${item.city.coord.lon}&zoom=18&size=200x150`}
+                  src={`https://maps.locationiq.com/v2/staticmap?key=${process.env.REACT_APP_WEATHER_IMAGE_API}&center=${item.city.coord.lat},${item.city.coord.lon}&zoom=18&size=200x150`}
                 />
               </div>
               <div className="col-3">
@@ -63,7 +63,7 @@ function Table({weather}) {
 }
 
 function mapStateToProps(state) {
-  return {weather: state.weather};
+  return { weather: state.weather };
 }
 
 export default connect(mapStateToProps)(Table);
